@@ -1,0 +1,15 @@
+{
+  "case_id": "case-001",
+  "user_query": "替换为用户问题。",
+  "reference_context": "替换为用于核验回答的冻结参考材料。",
+  "standard_answer": "可选的标准答案。",
+  "conversation_context": "",
+  "task_instruction": "可选的回答要求。",
+  "response": "替换为待评测回答。",
+  "dimension_id": "accuracy",
+  "metadata": {
+    "domain": "通用领域",
+    "split": "development|holdout|stability",
+    "reference_version": "v1.0.0"
+  }
+}

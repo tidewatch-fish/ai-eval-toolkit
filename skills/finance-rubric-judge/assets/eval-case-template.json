@@ -1,0 +1,15 @@
+{
+  "case_id": "fin-case-001",
+  "user_query": "替换为用户的金融问题。",
+  "reference_context": "替换为已冻结、可追溯的产品规则或业务材料。",
+  "standard_answer": "可选的标准答案。",
+  "conversation_context": "",
+  "task_instruction": "可选的回答要求。",
+  "response": "替换为待评测回答。",
+  "dimension_id": "accuracy",
+  "metadata": {
+    "domain": "banking|wealth|lending|payment",
+    "split": "development|holdout|stability",
+    "reference_version": "v1.0.0"
+  }
+}

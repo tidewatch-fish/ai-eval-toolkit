@@ -1,0 +1,5 @@
+{"case_id":"deposit-accuracy-fail","dimension_id":"accuracy","result":"错","evidence":["提前取出仍按2%计息，没有任何利息损失"],"reason":"错：计息规则错误且作出无损失承诺。","human_judgment":{"result":"错","reason":"计息规则错误且作出无损失承诺。"}}
+{"case_id":"deposit-accuracy-pass","dimension_id":"accuracy","result":"对","evidence":["提前支取部分按支取日挂牌活期利率计息"],"reason":"对：已表达信息与参考材料一致。","human_judgment":{"result":"对","reason":"已表达信息与参考材料一致。"}}
+{"case_id":"loan-completeness-fail","dimension_id":"completeness","result":"错","evidence":["可以提前还"],"reason":"错：遗漏直接影响决策的违约金条件。","human_judgment":{"result":"错","reason":"遗漏直接影响决策的违约金条件。"}}
+{"case_id":"wealth-helpfulness-fail","dimension_id":"helpfulness","result":"错","evidence":["T日15:00前申请则适用T+1确认并按TA清算周期处理"],"reason":"错：内部术语密集，普通用户难以理解。","human_judgment":{"result":"错","reason":"内部术语密集，普通用户难以理解。"}}
+{"case_id":"accuracy-not-applicable","dimension_id":"accuracy","result":"不适用","evidence":["请提供需要修改的风险提示原文"],"reason":"不适用：没有可核验的金融事实结论。","human_judgment":{"result":"不适用","reason":"没有可核验的金融事实结论。"}}

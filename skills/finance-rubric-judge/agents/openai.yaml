@@ -1,0 +1,4 @@
+interface:
+  display_name: "金融 Rubric 打分器"
+  short_description: "用金融固定维度 Rubric 评测回答并识别无依据承诺"
+  default_prompt: "使用 $finance-rubric-judge，分别从准确性、完整性和帮助性评测这条金融回答。"

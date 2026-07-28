@@ -1,0 +1,15 @@
+{
+  "case_id": "ecommerce-price-protection-001",
+  "user_query": "昨天买的商品今天降价了，但我的订单使用过店铺优惠券，还能申请价保吗？",
+  "reference_context": "虚构平台规则：购买后7天内，同一商品、同一规格仍在售，可以发起价保申请；使用店铺优惠券不影响申请资格；新人专享价、限时秒杀等特殊活动不参与价保；可以申请不代表一定补差，最终由系统审核；入口位于订单详情页的“申请价保”。",
+  "standard_answer": "可以发起价保申请。使用店铺优惠券不影响申请资格，但订单需在购买后7天内，且同一商品、同一规格仍在售；新人专享价、限时秒杀等特殊活动不参与。可以在订单详情页申请，是否补差以系统审核为准。",
+  "conversation_context": "",
+  "task_instruction": "直接回答能否申请，并说明关键条件和申请入口。",
+  "response": "你的订单使用过优惠券，不能申请价保。",
+  "dimension_id": "accuracy",
+  "metadata": {
+    "domain": "ecommerce",
+    "split": "demo",
+    "reference_version": "1.0"
+  }
+}

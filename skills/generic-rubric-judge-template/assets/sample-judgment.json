@@ -1,0 +1,9 @@
+{
+  "case_id": "ecommerce-price-protection-001",
+  "dimension_id": "accuracy",
+  "result": "错",
+  "evidence": [
+    "“使用过优惠券，不能申请价保”"
+  ],
+  "reason": "错：参考规则明确说明使用店铺优惠券不影响价保申请资格。"
+}

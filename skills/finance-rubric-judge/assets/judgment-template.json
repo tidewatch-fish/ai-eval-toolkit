@@ -1,0 +1,13 @@
+{
+  "case_id": "fin-case-001",
+  "dimension_id": "accuracy",
+  "result": "对|错|不适用",
+  "evidence": [
+    "待评回答原文或精确位置"
+  ],
+  "reason": "结论：核心原因。详情",
+  "human_judgment": {
+    "result": "对|错|不适用",
+    "reason": "可选的人工标注理由"
+  }
+}

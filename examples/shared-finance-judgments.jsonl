@@ -1,0 +1,7 @@
+{"case_id":"loan-prepayment-bad","dimension_id":"accuracy","result":"错","evidence":["肯定免费，不用看贷款办了多久"],"reason":"错：回答声称提前还款肯定免费，与未满12个月收取1%违约金的规则相反。","human_judgment":{"result":"错","reason":"“肯定免费、不用看期限”与参考规则相反。"}}
+{"case_id":"loan-prepayment-bad","dimension_id":"completeness","result":"错","evidence":["肯定免费，不用看贷款办了多久。直接找客户经理就行"],"reason":"错：回答遗漏12个月判断条件、1%违约金和App试算入口。","human_judgment":{"result":"错","reason":"遗漏12个月条件、1%违约金和App试算入口。"}}
+{"case_id":"loan-prepayment-bad","dimension_id":"helpfulness","result":"错","evidence":["合同条款不用管"],"reason":"错：表达带有误导和不当施压，与金融任务风险不相称。","human_judgment":{"result":"错","reason":"“合同条款不用管”带有误导和不当施压，表达与金融风险不相称。"}}
+{"case_id":"loan-prepayment-good","dimension_id":"accuracy","result":"对","evidence":["未满12个月提前还款，会收取提前偿还本金1%的违约金；满12个月后不收取"],"reason":"对：事实、数值、期限和操作入口均与参考材料一致。","human_judgment":{"result":"对","reason":"已表达事实、数值、期限和入口均与参考材料一致。"}}
+{"case_id":"loan-prepayment-good","dimension_id":"completeness","result":"对","evidence":["进入“贷款详情—提前还款”提交申请并先试算，最终费用以试算结果为准"],"reason":"对：费用条件、比例、免费条件、操作入口和试算口径均已覆盖。","human_judgment":{"result":"对","reason":"费用条件、比例、免费条件、操作入口和试算口径均已覆盖。"}}
+{"case_id":"loan-prepayment-good","dimension_id":"helpfulness","result":"对","evidence":["是否收费要看贷款发放是否满12个月","你可以打开示例银行App"],"reason":"对：回答结论优先、术语易懂，操作路径具体且没有过度承诺。","human_judgment":{"result":"对","reason":"结论优先、术语易懂，操作路径具体且没有过度承诺。"}}
+{"case_id":"rewrite-request-na","dimension_id":"accuracy","result":"不适用","evidence":["请把需要改写的原文发给我"],"reason":"不适用：回答没有可依据参考材料核验的金融事实结论。","human_judgment":{"result":"不适用","reason":"回答没有可依据参考材料核验的金融事实结论。"}}
