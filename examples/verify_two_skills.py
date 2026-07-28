@@ -11,6 +11,10 @@ from pathlib import Path
 from typing import Any
 
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+
 EXAMPLE_DIR = Path(__file__).resolve().parent
 MATERIALS_DIR = EXAMPLE_DIR.parent
 SKILLS_DIR = (
