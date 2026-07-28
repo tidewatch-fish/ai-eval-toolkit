@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""使用同一份 Gold Set 验证通用版和金融版 Rubric Skill。"""
+"""使用同一份最小人工标注验证集检查两份 Rubric Skill 的数据与统计流程。"""
 
 from __future__ import annotations
 
@@ -108,7 +108,7 @@ def validate_dataset(
     if case_keys != judgment_keys:
         raise AssertionError("样本与判断结果的 case_id + dimension_id 不一致。")
     if any(item["result"] != item["human_judgment"]["result"] for item in judgments):
-        raise AssertionError("示例 Judge 结果应与 Gold Set 人工标签完全一致。")
+        raise AssertionError("预制 Judge 结果应与人工标签完全一致。")
 
 
 def validate_na_miss_counts_as_missed_error(
