@@ -13,7 +13,13 @@
 
 两个目录都是自包含 Skill。即使脚本存在少量重复，也不要抽到公共目录，否则单独复制一个 Skill 后将无法运行。
 
-## 安装
+## 在 Coding Agent 中使用
+
+两份 Skill 的核心都是标准目录中的 `SKILL.md`、`references/`、`scripts/` 和 `assets/`，不依赖 Codex 才能工作。只要 Coding Agent 能读取本地文件，就可以使用。
+
+### 通用方式：直接读取
+
+这是兼容性最好的方式，不要求 Agent 支持 Skill 自动发现。
 
 克隆仓库：
 
@@ -22,26 +28,55 @@ git clone https://github.com/tidewatch-fish/ai-eval-toolkit.git
 cd ai-eval-toolkit
 ```
 
-将需要的 Skill 目录复制到 Codex Skills 目录。
+然后在 Codex、Claude Code、ZCode、Kimi Code、CodeBuddy 或其他 Coding Agent 中说：
+
+```text
+请先读取 skills/finance-rubric-judge/SKILL.md 及其中要求的配套文件，
+再按照该 Skill 的流程评测下面的金融回答。
+```
+
+通用版对应：
+
+```text
+请先读取 skills/generic-rubric-judge-template/SKILL.md 及其中要求的配套文件，
+再按照该 Skill 的流程评测下面的回答。
+```
+
+### 可选方式：安装到 Agent 的 Skill 目录
+
+如果 Coding Agent 支持自动发现 Skill，可将**整个 Skill 目录**复制到该产品配置的用户级或项目级 Skill 目录。不要只复制 `SKILL.md`，否则脚本、Rubric 和样例将不可用。
+
+不同产品、版本和安装方式使用的目录可能不同：
+
+| Coding Agent | 常见方式 |
+| --- | --- |
+| Codex | `$CODEX_HOME/skills`；未设置时通常为 `~/.codex/skills` |
+| Claude Code | 用户级 `~/.claude/skills` 或项目级 `.claude/skills` |
+| ZCode、Kimi Code、CodeBuddy 等 | 使用当前版本官方文档或本地配置指定的 Skill 目录 |
+
+如果无法确认目录，直接使用上一节的“读取 `SKILL.md`”方式，不影响 Skill 的核心评测流程。
+
+将下面的占位路径替换为当前 Agent 的 Skill 目录后执行。
 
 macOS / Linux：
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R skills/generic-rubric-judge-template ~/.codex/skills/
-cp -R skills/finance-rubric-judge ~/.codex/skills/
+SKILL_ROOT="/path/to/your-agent/skills"
+mkdir -p "$SKILL_ROOT"
+cp -R skills/generic-rubric-judge-template "$SKILL_ROOT/"
+cp -R skills/finance-rubric-judge "$SKILL_ROOT/"
 ```
 
 Windows PowerShell：
 
 ```powershell
-$skillRoot = Join-Path $env:USERPROFILE ".codex\skills"
+$skillRoot = "C:\path\to\your-agent\skills"
 New-Item -ItemType Directory -Path $skillRoot -Force | Out-Null
 Copy-Item "skills\generic-rubric-judge-template" $skillRoot -Recurse -Force
 Copy-Item "skills\finance-rubric-judge" $skillRoot -Recurse -Force
 ```
 
-安装后可以直接说：
+支持 `$skill-name` 显式调用语法的 Agent，安装后可以直接说：
 
 ```text
 使用 $generic-rubric-judge-template，分别从准确性、完整性和帮助性评测下面这条回答。
@@ -53,11 +88,11 @@ Copy-Item "skills\finance-rubric-judge" $skillRoot -Recurse -Force
 使用 $finance-rubric-judge，评测下面这条金融回答，并指出证据和规则边界。
 ```
 
-如果当前 AI 工具不支持自动发现 Skill，让模型先读取对应目录中的 `SKILL.md`，再提交评测样本。
+不支持 `$skill-name` 语法的 Agent，继续使用“请先读取 `<skill-directory>/SKILL.md`”的通用提示即可。
 
 ## 5 分钟真实评测
 
-安装 Skill 后，可在支持 Skill 的 AI 工具中直接提交下面的完整提示：
+完成上述任一使用方式后，可在 Coding Agent 中提交下面的完整提示。若 Agent 不支持 `$skill-name`，将第一句替换为“请先读取 `skills/finance-rubric-judge/SKILL.md` 及其配套文件”。
 
 ```text
 使用 $finance-rubric-judge，分别从准确性、完整性和帮助性评测下面这条回答。
@@ -131,7 +166,7 @@ python examples/verify_two_skills.py
 
 ## 版本说明
 
-- Git tag 和 GitHub Release（例如 `v1.0.2`）表示整个工具包的发布版本。
+- Git tag 和 GitHub Release（例如 `v1.x.y`）表示整个工具包的发布版本。
 - 每份 Rubric JSON 中的 `rubric_version` 表示评测规则版本。
 - 两者独立演进：工具包可以只修改文档或 CI 而不修改 Rubric；Rubric 规则变化时必须递增 `rubric_version` 并重新跑回归集。
 
@@ -158,7 +193,7 @@ ai-eval-toolkit/
 - `scripts/`：任务准备和确定性评分脚本；
 - `assets/`：单条输入输出模板与样例；
 - `experiment/`：回归集和批量判断样例；
-- `agents/openai.yaml`：Codex 展示元数据。
+- `agents/openai.yaml`：可选的 Codex 展示元数据，其他 Agent 可忽略。
 
 ## 贡献
 
